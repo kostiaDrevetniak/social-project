@@ -24,13 +24,13 @@ create table users(
 create table announcements (
     id uuid,
     title varchar(255) not null,
+    description text not null,
     location varchar(255) not null,
+    price money,
     start_time timestamp not null,
+    registration_link varchar(255),
     image bytea not null,
     organization_id bigint not null,
-    price money,
-    description text not null,
-    href varchar(255),
     reviewer_id uuid not null,
     primary key (id)
 );

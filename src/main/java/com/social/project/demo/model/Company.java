@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.awt.image.BufferedImage;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -21,4 +22,7 @@ public class Company {
     private String description;
     private BufferedImage logo;
     private CompanyType type;
+
+    @OneToMany(mappedBy = "organization")
+    private List<Announcement> announcements;
 }
