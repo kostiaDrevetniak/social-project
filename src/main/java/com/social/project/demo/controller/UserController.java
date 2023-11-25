@@ -22,7 +22,7 @@ public class UserController {
     @PostMapping
     public User create(@RequestBody User user){
         System.out.println(user);
-        return userService.save(user);
+        return userService.create(user);
     }
 
 }
