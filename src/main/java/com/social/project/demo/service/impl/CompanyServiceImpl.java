@@ -18,7 +18,7 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public Company create(Company company) {
         if (company == null)
-            throw new IllegalArgumentException("Category cannot be 'null'");
+            throw new IllegalArgumentException("Company cannot be 'null'");
         return companyRepository.save(company);
     }
 
