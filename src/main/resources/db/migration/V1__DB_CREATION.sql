@@ -15,7 +15,7 @@ create table companies (
 
 create table users(
     id uuid,
-    name varchar(255) not null unique,
+    username varchar(255) not null unique,
     password varchar(255) not null,
     role varchar(255) not null,
     primary key (id)

@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
-@Document
+@Document("test_collection")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,5 +19,4 @@ public class UncheckedAnnouncement {
     private byte[] image;
     private String description;
     private LocalDateTime creationDate;
-    private LocalDateTime startDate;
 }
