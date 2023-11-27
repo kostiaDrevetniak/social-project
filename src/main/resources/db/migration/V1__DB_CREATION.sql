@@ -30,7 +30,7 @@ create table announcements (
     start_time timestamp not null,
     registration_link varchar(255),
     image bytea not null,
-    organization_id bigint not null,
+    organization_id uuid not null,
     reviewer_id uuid not null,
     primary key (id)
 );

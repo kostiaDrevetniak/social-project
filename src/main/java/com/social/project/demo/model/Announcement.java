@@ -27,7 +27,7 @@ public class Announcement {
     private LocalDateTime startTime;
     @Column(name = "registration_link")
     private String registrationLink;
-    private BufferedImage image;
+    private byte[] image;
 
     @ManyToOne
     @JoinColumn(name = "organization_id")

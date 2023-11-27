@@ -20,7 +20,8 @@ public class Company {
     private UUID id;
     private String name;
     private String description;
-    private BufferedImage logo;
+    private byte[] logo;
+    @Enumerated(EnumType.STRING)
     private CompanyType type;
 
     @OneToMany(mappedBy = "organization")
