@@ -8,7 +8,9 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -23,5 +25,17 @@ public class UncheckedAnnouncementServiceImpl implements UncheckedAnnouncementSe
     public UncheckedAnnouncement getById(String id) {
         return uncheckedAnnouncementRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("Unchecked announcement with id " + id + " not found"));
+    }
+
+    @Override
+    public List<UncheckedAnnouncementTitle> getByCompanyName(String companyName) {
+        return uncheckedAnnouncementRepository.findByCompanyName(companyName);
+//        List<UncheckedAnnouncementTitle> titles = uncheckedAnnouncementRepository.findByCompanyName(companyName);
+//        return (titles != null) ? titles : new ArrayList<>();
+    }
+
+    @Override
+    public void delete(String id) {
+        uncheckedAnnouncementRepository.deleteById(id);
     }
 }

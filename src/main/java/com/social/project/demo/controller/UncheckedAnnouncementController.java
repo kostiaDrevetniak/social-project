@@ -15,13 +15,23 @@ import java.util.List;
 public class UncheckedAnnouncementController {
     private final UncheckedAnnouncementService uncheckedAnnouncementService;
 
-    @GetMapping
+    @GetMapping("/all")
     public List<UncheckedAnnouncementTitle> getAllTitles() {
         return uncheckedAnnouncementService.getAllTitles();
+    }
+
+    @GetMapping
+    public List<UncheckedAnnouncementTitle> getByCompanyName(@RequestParam("company-name") String companyName) {
+        return uncheckedAnnouncementService.getByCompanyName(companyName);
     }
 
     @GetMapping("/{id}")
     public UncheckedAnnouncement getById(@PathVariable String id) {
         return uncheckedAnnouncementService.getById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable String id) {
+        uncheckedAnnouncementService.delete(id);
     }
 }

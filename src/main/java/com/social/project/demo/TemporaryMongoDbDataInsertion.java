@@ -37,7 +37,7 @@ public class TemporaryMongoDbDataInsertion {
 
                     Вхід вільний
 
-                    Обов'язкова попередня реєстрація❗️
+                    Обов`язкова попередня реєстрація❗️
 
                     Посилання на форму\uD83D\uDC47\uD83C\uDFFB
                     https://cutt.ly/a4Huoe6
@@ -46,13 +46,6 @@ public class TemporaryMongoDbDataInsertion {
             uncheckedAnnouncement.setCreationDate(LocalDateTime.parse("2023-05-13T14:00"));
             uncheckedAnnouncement.setStartDate(LocalDateTime.parse("2023-05-27T14:00"));
             uncheckedAnnouncementRepository.insert(uncheckedAnnouncement);
-//            Currency currency1 = new Currency();
-//            currency1.setName("BTC/USD");
-//            Currency currency2 = new Currency();
-//            currency2.setName("ETH/USD");
-//            Currency currency3 = new Currency();
-//            currency3.setName("XRP/USD");
-//            currencyRepository.insert(List.of(currency1, currency2, currency3));
         };
     }
 }

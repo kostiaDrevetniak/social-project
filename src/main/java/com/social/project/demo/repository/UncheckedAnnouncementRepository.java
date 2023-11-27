@@ -10,4 +10,6 @@ import java.util.List;
 public interface UncheckedAnnouncementRepository extends MongoRepository<UncheckedAnnouncement, String> {
     @Query("{}")
     List<UncheckedAnnouncementTitle> findIdAndCompanyNameAndCreationDate();
+
+    List<UncheckedAnnouncementTitle> findByCompanyName(String companyName);
 }
