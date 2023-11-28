@@ -21,7 +21,7 @@ public class User {
     private UUID id;
     @Pattern(regexp = "[А-ЯҐЄІЇ][а-яґєії]+ [А-ЯҐЄІЇ][а-яґєії]+", message = "Must contain two words starting with " +
             "uppercase ukrainian letter followed by one or more lowercase letters.")
-    private String name;
+    private String username;
     @Pattern(regexp = "[A-Za-z\\d]{6,}]", message = "Must be longer than 5 symbols using digits and latin letters.")
     @Pattern(regexp = ".*\\d.*", message = "Must contain at least one digit.")
     @Pattern(regexp = ".*[A-Z].*]", message = "Must contain at least one uppercase letter.")
