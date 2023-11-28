@@ -19,7 +19,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -53,12 +53,11 @@ public class WebSecurityConfigurer {
 
         http.csrf(c -> c.disable())
                 .authorizeHttpRequests(c -> {
-                        c.requestMatchers("/login", "/api/users/register", "/swagger-ui/**").permitAll();
-                        c.anyRequest().authenticated();
+                    c.requestMatchers("/login", "/api/users/register", "/swagger-ui/**").permitAll();
+                    c.anyRequest().authenticated();
                 })
                 .addFilter(new JwtAuthenticationFilter(authenticationManager, jwtTokenGenerator))
-                .addFilterAfter(new JwtAuthorizationFilter(userDetailsExtractor), JwtAuthenticationFilter.class)
-//                .addFilter(new JwtAuthorizationFilter(userDetailsExtractor))
+                .addFilterAfter(new JwtAuthorizationFilter(userDetailsExtractor), UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(c -> {
                     c.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
                 });
