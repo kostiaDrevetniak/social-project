@@ -1,7 +1,6 @@
 package com.social.project.demo.service.impl;
 
 import com.social.project.demo.model.Announcement;
-import com.social.project.demo.model.Company;
 import com.social.project.demo.repository.AnnouncementRepository;
 import com.social.project.demo.service.AnnouncementService;
 import jakarta.persistence.EntityNotFoundException;

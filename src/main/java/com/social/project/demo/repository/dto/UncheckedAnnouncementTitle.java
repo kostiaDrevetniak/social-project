@@ -1,11 +1,9 @@
 package com.social.project.demo.repository.dto;
 
-import com.social.project.demo.repository.UncheckedAnnouncementRepository;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 
 @NoArgsConstructor
 @Getter
