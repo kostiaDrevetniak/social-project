@@ -1,6 +1,5 @@
 package com.social.project.demo.security.config;
 
-import com.social.project.demo.security.filter.JwtAuthenticationFilter;
 import com.social.project.demo.security.filter.JwtAuthorizationFilter;
 import com.social.project.demo.security.util.JwtTokenGenerator;
 import com.social.project.demo.security.util.JwtTokenProvider;
@@ -15,7 +14,6 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
@@ -53,10 +51,10 @@ public class WebSecurityConfigurer {
 
         http.csrf(c -> c.disable())
                 .authorizeHttpRequests(c -> {
-                    c.requestMatchers("/login", "/api/users/register", "/swagger-ui/**").permitAll();
+//                    c.anyRequest().permitAll();
+                    c.requestMatchers("/auth/login").permitAll();
                     c.anyRequest().authenticated();
                 })
-                .addFilter(new JwtAuthenticationFilter(authenticationManager, jwtTokenGenerator))
                 .addFilterAfter(new JwtAuthorizationFilter(userDetailsExtractor), UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(c -> {
                     c.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -68,19 +66,4 @@ public class WebSecurityConfigurer {
 
         return http.build();
     }
-
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers(
-                "/v2/api-docs",
-                "/configuration/ui",
-                "/swagger-resources/**",
-                "/configuration/security",
-                "/swagger-ui.html",
-                "/webjars/**",
-                "/swagger-ui/**"
-        );
-    }
-
-
 }
