@@ -1,7 +1,7 @@
 package com.social.project.demo.repository;
 
 import com.social.project.demo.model.UncheckedAnnouncement;
-import com.social.project.demo.repository.dto.UncheckedAnnouncementTitle;
+import com.social.project.demo.dto.response.UncheckedAnnouncementTitle;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 

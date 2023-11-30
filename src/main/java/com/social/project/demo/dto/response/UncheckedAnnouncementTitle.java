@@ -1,4 +1,4 @@
-package com.social.project.demo.repository.dto;
+package com.social.project.demo.dto.response;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

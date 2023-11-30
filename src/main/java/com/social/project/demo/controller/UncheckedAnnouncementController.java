@@ -1,7 +1,7 @@
 package com.social.project.demo.controller;
 
 import com.social.project.demo.model.UncheckedAnnouncement;
-import com.social.project.demo.repository.dto.UncheckedAnnouncementTitle;
+import com.social.project.demo.dto.response.UncheckedAnnouncementTitle;
 import com.social.project.demo.service.UncheckedAnnouncementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

@@ -8,7 +8,7 @@ create table companies (
     id uuid,
     name varchar(255) not null unique,
     description text not null,
-    logo bytea not null,
+    logo bytea,
     type varchar(255) not null,
     primary key (id)
 );

@@ -2,15 +2,13 @@ package com.social.project.demo.service.impl;
 
 import com.social.project.demo.model.UncheckedAnnouncement;
 import com.social.project.demo.repository.UncheckedAnnouncementRepository;
-import com.social.project.demo.repository.dto.UncheckedAnnouncementTitle;
+import com.social.project.demo.dto.response.UncheckedAnnouncementTitle;
 import com.social.project.demo.service.UncheckedAnnouncementService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
