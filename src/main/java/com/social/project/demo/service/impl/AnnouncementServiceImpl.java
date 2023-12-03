@@ -1,6 +1,8 @@
 package com.social.project.demo.service.impl;
 
+import com.social.project.demo.dto.response.AnnouncementTitle;
 import com.social.project.demo.model.Announcement;
+import com.social.project.demo.model.Company;
 import com.social.project.demo.repository.AnnouncementRepository;
 import com.social.project.demo.service.AnnouncementService;
 import jakarta.persistence.EntityNotFoundException;
@@ -46,5 +48,15 @@ public class AnnouncementServiceImpl implements AnnouncementService {
     @Override
     public List<Announcement> getAll() {
         return announcementRepository.findAll();
+    }
+
+    @Override
+    public List<AnnouncementTitle> getAllTitles() {
+        return announcementRepository.getAllTitles();
+    }
+
+    @Override
+    public List<AnnouncementTitle> getTitlesByCompany(Company company) {
+        return announcementRepository.getTitlesByCompany(company);
     }
 }

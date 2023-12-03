@@ -2,6 +2,8 @@ package com.social.project.demo.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,14 +23,17 @@ public class Company {
     private UUID id;
     @Pattern(regexp = "[А-ЯҐЄІЇа-яґєії ]+", message = "Mustn't contain numbers or special characters.")
     private String name;
-//  Не знаю як тут написати
-    private String description;
     @NotBlank(message = "Mustn't be empty.")
+    private String description;
+    @NotNull(message = "Mustn't be null.")
+    @Column(name = "channel_name")
+    private String channelName;
+    @NotEmpty(message = "Mustn't be empty.")
     private byte[] logo;
-//  Не знаю як тут написати
+    @NotNull(message = "Mustn't be null.")
     @Enumerated(EnumType.STRING)
     private CompanyType type;
 
-    @OneToMany(mappedBy = "organization")
+    @OneToMany(mappedBy = "company")
     private List<Announcement> announcements;
 }

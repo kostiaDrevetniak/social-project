@@ -8,7 +8,7 @@ insert into categories values('e38bfa20-8e47-11ee-b9d1-0242ac120002', 'Обмі�
 insert into categories values('e38bfb60-8e47-11ee-b9d1-0242ac120002', 'Література');
 insert into categories values('8f23cbae-8e95-11ee-b9d1-0242ac120002', 'Розваги');
 
-insert into companies values('ee953ee2-8e95-11ee-b9d1-0242ac120002', 'ToDo', 'Something', null, 'PARTNER');
-insert into companies values('ee95414e-8e95-11ee-b9d1-0242ac120002', 'Цитати', 'Something by someone', null, 'SPONSOR');
-insert into companies values('ee9544dc-8e95-11ee-b9d1-0242ac120002', 'Молодіжний центр Тернополя', '*Опис*', null, 'PARTNER');
+insert into companies values('ee953ee2-8e95-11ee-b9d1-0242ac120002', 'ToDo', 'Something', 'ToDo', null, 'PARTNER');
+insert into companies values('ee95414e-8e95-11ee-b9d1-0242ac120002', 'Цитати', 'Something by someone', 'Цитати', null, 'SPONSOR');
+insert into companies values('ee9544dc-8e95-11ee-b9d1-0242ac120002', 'Молодіжний центр Тернополя', '*Опис*', 'Молодіжний Центр Тернопіль', null, 'PARTNER');
 

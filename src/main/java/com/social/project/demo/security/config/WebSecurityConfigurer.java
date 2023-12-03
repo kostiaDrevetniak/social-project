@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -48,10 +49,8 @@ public class WebSecurityConfigurer {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         var authenticationManager = authenticationManager(http.getSharedObject(AuthenticationConfiguration.class));
-
-        http.csrf(c -> c.disable())
+        http.cors(Customizer.withDefaults()).csrf(c -> c.disable())
                 .authorizeHttpRequests(c -> {
-//                    c.anyRequest().permitAll();
                     c.requestMatchers("/auth/login").permitAll();
                     c.anyRequest().authenticated();
                 })
@@ -62,7 +61,6 @@ public class WebSecurityConfigurer {
 
         http.exceptionHandling(c -> c
                 .authenticationEntryPoint(authenticationEntryPoint));
-//                .accessDeniedHandler(accessDeniedHandler));
 
         return http.build();
     }

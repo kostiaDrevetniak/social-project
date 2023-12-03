@@ -1,5 +1,6 @@
 package com.social.project.demo.service.impl;
 
+import com.social.project.demo.dto.response.CompanyName;
 import com.social.project.demo.model.Company;
 import com.social.project.demo.repository.CompanyRepository;
 import com.social.project.demo.service.CompanyService;
@@ -45,5 +46,15 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public List<Company> getAll() {
         return companyRepository.findAll();
+    }
+
+    @Override
+    public List<CompanyName> getAllNames() {
+        return companyRepository.getAllCompaniesName();
+    }
+
+    @Override
+    public Company getByChannelName(String channelName) {
+        return companyRepository.getByChannelName(channelName);
     }
 }

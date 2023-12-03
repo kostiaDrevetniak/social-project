@@ -1,6 +1,9 @@
 package com.social.project.demo.model;
 
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,12 +21,10 @@ public class UncheckedAnnouncement {
     private String id;
     @Pattern(regexp = "[А-ЯҐЄІЇа-яґєії ]+", message = "Mustn't contain numbers or special characters.")
     private String companyName;
-    @NotBlank(message = "Mustn't be empty.")
+    @NotEmpty(message = "Mustn't be empty.")
     private byte[] image;
-//  Не знаю як тут написати
+    @NotBlank(message = "Mustn't be empty.")
     private String description;
     @FutureOrPresent(message = "Mustn't be past.")
     private LocalDateTime creationDate;
-    @Future(message = "Must be future.")
-    private LocalDateTime startDate;
 }

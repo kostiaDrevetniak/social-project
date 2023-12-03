@@ -1,8 +1,8 @@
 package com.social.project.demo.service.impl;
 
+import com.social.project.demo.dto.response.UncheckedAnnouncementTitle;
 import com.social.project.demo.model.UncheckedAnnouncement;
 import com.social.project.demo.repository.UncheckedAnnouncementRepository;
-import com.social.project.demo.dto.response.UncheckedAnnouncementTitle;
 import com.social.project.demo.service.UncheckedAnnouncementService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UncheckedAnnouncementServiceImpl implements UncheckedAnnouncementService {
     private final UncheckedAnnouncementRepository uncheckedAnnouncementRepository;
+
     @Override
     public List<UncheckedAnnouncementTitle> getAllTitles() {
         return uncheckedAnnouncementRepository.findIdAndCompanyNameAndCreationDate();
@@ -28,8 +29,6 @@ public class UncheckedAnnouncementServiceImpl implements UncheckedAnnouncementSe
     @Override
     public List<UncheckedAnnouncementTitle> getByCompanyName(String companyName) {
         return uncheckedAnnouncementRepository.findByCompanyName(companyName);
-//        List<UncheckedAnnouncementTitle> titles = uncheckedAnnouncementRepository.findByCompanyName(companyName);
-//        return (titles != null) ? titles : new ArrayList<>();
     }
 
     @Override

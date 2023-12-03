@@ -5,22 +5,19 @@ import com.social.project.demo.security.dto.LoginRequest;
 import com.social.project.demo.security.dto.LoginResponse;
 import com.social.project.demo.security.entity.SecureUser;
 import com.social.project.demo.security.util.JwtTokenGenerator;
-import com.social.project.demo.security.util.JwtTokenUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static java.util.Objects.requireNonNullElse;
 
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
+@CrossOrigin
 public class LoginController {
     private final AuthenticationManager authenticationManager;
     private final JwtTokenGenerator tokenGenerator;

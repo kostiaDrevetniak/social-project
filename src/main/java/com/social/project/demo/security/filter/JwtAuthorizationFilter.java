@@ -1,15 +1,11 @@
 package com.social.project.demo.security.filter;
 
-import com.social.project.demo.security.service.UserDetailsServiceImpl;
-import com.social.project.demo.security.util.JwtTokenUtil;
 import com.social.project.demo.security.util.UserDetailsExtractor;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

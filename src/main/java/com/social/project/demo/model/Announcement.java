@@ -24,24 +24,27 @@ public class Announcement {
     private UUID id;
     @Pattern(regexp = "[А-ЯҐЄІЇа-яґєії ]+", message = "Mustn't contain numbers or special characters.")
     private String title;
-//  Не знаю як тут написати
+    @NotBlank(message = "Mustn't be empty.")
     private String description;
-    @Pattern(regexp = "[А-ЯҐЄІЇа-яґєії0-9 ]", message = "Mustn't contain special characters.")
+    //    @Pattern(regexp = "[А-ЯҐЄІЇа-яґєії0-9 ]", message = "Mustn't contain special characters.")
     private String location;
     @Min(value = 0, message = "Must be greater or equal 0.")
     private Double price;
-    @FutureOrPresent(message = "Mustn't be past")
-    @Column(name = "start_time")
-    private LocalDateTime startTime;
+    @Future(message = "Must be future.")
+    @Column(name = "start_date")
+    private LocalDateTime startDate;
+    //    @FutureOrPresent(message = "Mustn't be past")
+    @Column(name = "creation_date")
+    private LocalDateTime creationDate;
     @URL(message = "Must be a URL.")
     @Column(name = "registration_link")
     private String registrationLink;
-    @NotBlank(message = "Mustn't be empty.")
+    @NotEmpty(message = "Mustn't be empty.")
     private byte[] image;
 
     @ManyToOne
     @JoinColumn(name = "organization_id")
-    private Company organization;
+    private Company company;
 
     @ManyToOne
     @JoinColumn(name = "reviewer_id")

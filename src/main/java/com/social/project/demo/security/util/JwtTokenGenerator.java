@@ -5,7 +5,6 @@ import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.time.Clock;
 import java.util.Date;
 
 import static com.social.project.demo.security.util.JwtTokenUtil.encodeSecretKey;
