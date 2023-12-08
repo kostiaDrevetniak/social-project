@@ -8,8 +8,11 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -56,5 +59,28 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public Company getByChannelName(String channelName) {
         return companyRepository.getByChannelName(channelName);
+    }
+
+    @Override
+    public List<String> getSponsorsLogo() {
+        List<byte[]> sponsorsLogo = companyRepository.getSponsorsLogo();
+        return sponsorsLogo.stream().map(s -> Base64.getEncoder().encodeToString(s)).toList();
+    }
+
+    @Override
+    public List<String> getPartnersLogo() {
+        List<byte[]> sponsorsLogo = companyRepository.getPartnersLogo();
+        return sponsorsLogo.stream().map(s -> Base64.getEncoder().encodeToString(s))
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    @Override
+    public List<Company> getSponsors() {
+        return companyRepository.getSponsors();
+    }
+
+    @Override
+    public List<Company> getPartners() {
+        return companyRepository.getPartners();
     }
 }

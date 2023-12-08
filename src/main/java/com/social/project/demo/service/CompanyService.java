@@ -14,4 +14,8 @@ public interface CompanyService {
     List<Company> getAll();
     List<CompanyName> getAllNames();
     Company getByChannelName(String channelName);
+    List<String > getSponsorsLogo();
+    List<String> getPartnersLogo();
+    List<Company> getSponsors();
+    List<Company> getPartners();
 }

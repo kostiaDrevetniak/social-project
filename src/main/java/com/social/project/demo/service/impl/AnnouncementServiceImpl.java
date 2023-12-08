@@ -2,6 +2,7 @@ package com.social.project.demo.service.impl;
 
 import com.social.project.demo.dto.response.AnnouncementTitle;
 import com.social.project.demo.model.Announcement;
+import com.social.project.demo.model.Category;
 import com.social.project.demo.model.Company;
 import com.social.project.demo.repository.AnnouncementRepository;
 import com.social.project.demo.service.AnnouncementService;
@@ -58,5 +59,10 @@ public class AnnouncementServiceImpl implements AnnouncementService {
     @Override
     public List<AnnouncementTitle> getTitlesByCompany(Company company) {
         return announcementRepository.getTitlesByCompany(company);
+    }
+
+    @Override
+    public List<Announcement> getByCategories(List<Category> categories) {
+        return announcementRepository.getAnnouncementByCategories(categories);
     }
 }

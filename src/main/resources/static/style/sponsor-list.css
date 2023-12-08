@@ -1,0 +1,8 @@
+.child{
+    flex: 1 0 50%;
+}
+
+.child img {
+    height: 400px;
+    width: 400px;
+}

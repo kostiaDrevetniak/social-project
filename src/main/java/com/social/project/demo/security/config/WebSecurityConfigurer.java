@@ -51,8 +51,8 @@ public class WebSecurityConfigurer {
         var authenticationManager = authenticationManager(http.getSharedObject(AuthenticationConfiguration.class));
         http.cors(Customizer.withDefaults()).csrf(c -> c.disable())
                 .authorizeHttpRequests(c -> {
-                    c.requestMatchers("/auth/login").permitAll();
-                    c.anyRequest().authenticated();
+                    c.requestMatchers("/api/..").authenticated();
+                    c.anyRequest().permitAll();
                 })
                 .addFilterAfter(new JwtAuthorizationFilter(userDetailsExtractor), UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(c -> {

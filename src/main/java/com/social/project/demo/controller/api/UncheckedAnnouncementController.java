@@ -1,4 +1,4 @@
-package com.social.project.demo.controller;
+package com.social.project.demo.controller.api;
 
 import com.social.project.demo.dto.response.AnnouncementResponse;
 import com.social.project.demo.dto.response.UncheckedAnnouncementTitle;
@@ -44,6 +44,7 @@ public class UncheckedAnnouncementController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable String id) {
+        System.out.println("delete");
         uncheckedAnnouncementService.delete(id);
     }
 }

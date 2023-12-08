@@ -1,4 +1,4 @@
-package com.social.project.demo.controller;
+package com.social.project.demo.controller.api;
 
 import com.social.project.demo.model.Category;
 import com.social.project.demo.service.CategoryService;

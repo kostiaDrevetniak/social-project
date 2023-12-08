@@ -13,4 +13,16 @@ public interface CompanyRepository extends JpaRepository<Company, UUID> {
     List<CompanyName> getAllCompaniesName();
 
     Company getByChannelName(String channelName);
+
+    @Query("Select company.logo from Company company where company.type = CompanyType.SPONSOR")
+    List<byte[]> getSponsorsLogo();
+
+    @Query("Select company.logo from Company company where company.type = CompanyType.PARTNER")
+    List<byte[]> getPartnersLogo();
+
+    @Query("Select company from Company company where company.type = CompanyType.SPONSOR")
+    List<Company> getSponsors();
+
+    @Query("Select company from Company company where company.type = CompanyType.PARTNER")
+    List<Company> getPartners();
 }

@@ -2,6 +2,7 @@ package com.social.project.demo.repository;
 
 import com.social.project.demo.dto.response.AnnouncementTitle;
 import com.social.project.demo.model.Announcement;
+import com.social.project.demo.model.Category;
 import com.social.project.demo.model.Company;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,4 +19,7 @@ public interface AnnouncementRepository extends JpaRepository<Announcement, UUID
             "(an.id, an.title, an.company.name, an.creationDate, an.startDate) " +
             "from Announcement an where an.company = ?1")
     List<AnnouncementTitle> getTitlesByCompany(Company company);
+
+    @Query("select an from Announcement an where (select c from an.categories c) in ?1 ")
+    List<Announcement> getAnnouncementByCategories(List<Category> categories);
 }

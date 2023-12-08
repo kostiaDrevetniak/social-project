@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Арт-терапія</title>
+    <link
+            crossorigin="anonymous"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" th:href="@{/style/index.css}"/>
+    <link href="index.css" rel="stylesheet"/>
+</head>
+<body>
+<div th:replace="~{header}"></div>
+<div class="container" style="padding-top: 30px;">
+    <h1 class="text-center" th:text="${announcement.title}"></h1>
+    <div class="d-flex justify-content-between pt-5">
+        <div style="width: 55%; background-color: rgba(165, 165, 165, 0.548)">
+            <pre style="white-space: pre-wrap; font-size: 18px; background-color: transparent;"
+                 th:text="${announcement.description}"></pre>
+        </div>
+        <div style="width: 40%">
+            <div>
+                <img
+                        alt="зображення"
+                        style="height: 450px; width: 450px"
+                        th:src="@{|data:image/jpeg;base64,${announcement.image}|}"
+                />
+            </div>
+            <div class="pt-2" style="font-size: 18px">
+                <b>Організатор: </b><span th:text="${announcement.companyName}"></span>
+            </div>
+            <div class="pt-2" style="font-size: 18px;">
+                <b>Місце проведення: </b><span th:text="${announcement.location}"></span>
+            </div>
+            <div class="pt-2" style="font-size: 18px;"><b>Ціна участі: </b><span th:text="${announcement.price}"></span>
+            </div>
+            <div class="pt-2" style="font-size: 18px;">
+                <b>Посилання для реєстрації: </b
+                ><a th:href="${announcement.registrationLink}" th:text="${announcement.registrationLink}"></a>
+            </div>
+            <div class="pt-2" style="font-size: 18px;"><b>Дата проведення: </b><span
+                    th:text="${announcement.startDate}"></span>
+            </div>
+            <div class="pt-2" style="font-size: 18px;">
+                <b>Категорії: </b
+                ><a
+                    class="btn btn-outline-secondary " style="color: black;"
+                    th:each="category: ${announcement.categories}"
+                    th:href="@{|/announcements?${category.id}=true|}" th:text="${category.name}"></a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

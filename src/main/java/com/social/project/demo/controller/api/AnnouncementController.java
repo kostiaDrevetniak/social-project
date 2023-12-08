@@ -1,4 +1,4 @@
-package com.social.project.demo.controller;
+package com.social.project.demo.controller.api;
 
 import com.social.project.demo.dto.request.AnnouncementRequest;
 import com.social.project.demo.dto.response.AnnouncementResponse;
@@ -12,6 +12,8 @@ import com.social.project.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,7 +38,7 @@ public class AnnouncementController {
     }
 
     @GetMapping
-    public List<AnnouncementTitle> getTitlesByCompanyId(@RequestParam UUID id) {
+    public List<AnnouncementTitle> getTitlesByCompanyId(@RequestParam(name = "company") UUID id) {
         Company company = companyService.readById(id);
         return announcementService.getTitlesByCompany(company);
     }
@@ -54,7 +56,7 @@ public class AnnouncementController {
     @PostMapping
     public ResponseEntity<?> create(@RequestBody AnnouncementRequest request) {
         Announcement announcement = modelMapper.map(request, Announcement.class);
-        SecureUser authenticatedUser = (SecureUser) SecurityContextHolder.getContext().getAuthentication().getDetails();
+        SecureUser authenticatedUser = (SecureUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         announcement.setReviewer(userService.readById(authenticatedUser.getId()));
         announcement.setCreationDate(LocalDateTime.now());
         Announcement created = announcementService.create(announcement);
@@ -66,7 +68,7 @@ public class AnnouncementController {
                        @PathVariable UUID id) {
         Announcement announcement = modelMapper.map(request, Announcement.class);
         announcement.setId(id);
-        SecureUser authenticatedUser = (SecureUser) SecurityContextHolder.getContext().getAuthentication().getDetails();
+        SecureUser authenticatedUser = (SecureUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         announcement.setReviewer(userService.readById(authenticatedUser.getId()));
         announcement.setCreationDate(announcementService.readById(id).getCreationDate());
         announcementService.update(announcement);

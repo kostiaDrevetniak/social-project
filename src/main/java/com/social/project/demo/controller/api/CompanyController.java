@@ -1,4 +1,4 @@
-package com.social.project.demo.controller;
+package com.social.project.demo.controller.api;
 
 import com.social.project.demo.dto.request.CompanyRequest;
 import com.social.project.demo.dto.response.CompanyName;
