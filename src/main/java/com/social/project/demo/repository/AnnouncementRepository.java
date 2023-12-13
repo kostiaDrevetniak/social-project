@@ -20,6 +20,6 @@ public interface AnnouncementRepository extends JpaRepository<Announcement, UUID
             "from Announcement an where an.company = ?1")
     List<AnnouncementTitle> getTitlesByCompany(Company company);
 
-    @Query("select an from Announcement an where (select c from an.categories c) in ?1 ")
+    @Query("select an from Announcement an join an.categories c where c in ?1")
     List<Announcement> getAnnouncementByCategories(List<Category> categories);
 }

@@ -36,7 +36,7 @@ public class Announcement {
     //    @FutureOrPresent(message = "Mustn't be past")
     @Column(name = "creation_date")
     private LocalDateTime creationDate;
-    @URL(message = "Must be a URL.")
+//    @URL(message = "Must be a URL.")
     @Column(name = "registration_link")
     private String registrationLink;
     @NotEmpty(message = "Mustn't be empty.")
