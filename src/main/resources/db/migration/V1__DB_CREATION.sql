@@ -45,5 +45,5 @@ create table announcement_categories(
 alter table announcements add constraint constraints1 foreign key (organization_id) references companies;
 alter table announcements add constraint constraints2 foreign key (reviewer_id) references users;
 alter table announcement_categories add constraint constraints3 foreign key (announcement_id) references announcements;
-alter table announcement_categories add constraint constraints4 foreign key (category_id) references categories;
+alter table announcement_categories add constraint constraints4 foreign key (category_id) references categories on delete cascade;
 
